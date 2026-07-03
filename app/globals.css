@@ -1,0 +1,183 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: rgba(10, 10, 11, 0.85);
+  --color-bg-secondary: rgba(18, 18, 19, 0.85);
+  --color-bg-elevated: rgba(26, 26, 27, 0.85);
+  --color-bg-surface-hover: rgba(30, 30, 34, 0.85);
+  --color-bg-alt: rgba(13, 13, 14, 0.85);
+  --color-fg-primary: #fafafa;
+  --color-fg-secondary: #a1a1aa;
+  --color-fg-tertiary: #a1a1aa;
+  --color-fg-inverse: #0a0a0b;
+  --color-border-primary: #27272a;
+  --color-border-secondary: #18181b;
+  --color-border-hover: #3f3f46;
+  --color-accent: #fafafa;
+  --color-accent-hover: #d4d4d8;
+  --color-accent-muted: rgba(250, 250, 250, 0.1);
+  --color-success: #22c55e;
+  --color-error: #ef4444;
+  --color-warning: #f59e0b;
+  --color-glow: rgba(250, 250, 250, 0.03);
+
+  --backdrop-glass: rgba(10, 10, 11, 0.8);
+
+  --animate-fade-in: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-fade-in-up: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-scale-in: scaleIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-in-right: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-reveal: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUpLarge {
+  from { opacity: 0; transform: translateY(60px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes scaleInSmall {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(40px); clip-path: inset(0 0 100% 0); }
+  to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
+}
+
+/* === Noise texture overlay === */
+.noise::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* === Scroll Reveal System === */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered reveal delays — Apple-style hierarchy */
+.reveal-delay-1 { transition-delay: 0s; }
+.reveal-delay-2 { transition-delay: 0.12s; }
+.reveal-delay-3 { transition-delay: 0.24s; }
+.reveal-delay-4 { transition-delay: 0.36s; }
+.reveal-delay-5 { transition-delay: 0.48s; }
+
+/* CSS Scroll-Driven Animations (progressive enhancement) */
+@supports (animation-timeline: view()) {
+  .reveal-css {
+    animation: fadeInUp linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 40%;
+  }
+
+  .reveal-css-stagger {
+    animation: fadeInUp linear both;
+    animation-timeline: view();
+  }
+
+  .reveal-css-stagger:nth-child(1) { animation-range: entry 0% entry 25%; }
+  .reveal-css-stagger:nth-child(2) { animation-range: entry 10% entry 35%; }
+  .reveal-css-stagger:nth-child(3) { animation-range: entry 20% entry 45%; }
+  .reveal-css-stagger:nth-child(4) { animation-range: entry 30% entry 55%; }
+  .reveal-css-stagger:nth-child(5) { animation-range: entry 40% entry 65%; }
+}
+
+/* Hero grid background */
+.hero-grid {
+  background-image:
+    linear-gradient(var(--color-border-secondary) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border-secondary) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Premium section transitions */
+.section-bg-alt {
+  background-color: var(--color-bg-alt);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--color-border-primary),
+    transparent
+  );
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Scroll progress bar */
+.scroll-progress {
+  transform-origin: left;
+  transition: transform 0.1s linear;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: var(--color-accent-muted);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg-primary);
+  color: var(--color-fg-primary);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
