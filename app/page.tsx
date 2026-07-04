@@ -35,9 +35,9 @@ const navItems = [
     hoverStyles: { bgColor: "#654b92", textColor: "#ffffff" },
   },
   {
-    label: "blog",
-    href: "#",
-    ariaLabel: "Blog",
+    label: "skills",
+    href: "#skills",
+    ariaLabel: "Skills",
     rotation: 8,
     hoverStyles: { bgColor: "#654b92", textColor: "#ffffff" },
   },
