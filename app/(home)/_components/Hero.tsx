@@ -59,9 +59,9 @@ export default function Hero() {
         >
           Building
           <br />
-          <span className="text-[var(--color-fg-tertiary)]">system </span><span className="text-[var(--color-fg-primary)]">that</span>
+          <span className="text-[var(--color-fg-tertiary)]">system that</span>
           <br />
-          <span className="relative inline-block text-[var(--color-fg-tertiary)]">
+          <span className="relative inline-block">
             last.
             <span className="absolute -bottom-2 left-0 h-px w-full bg-[var(--color-fg-primary)]/20" />
           </span>
