@@ -13,7 +13,6 @@ const messages = [
   "fueling the delulu",
   "just vibing",
   "cooldown",
-  "avoiding responsibilities",
   "rotmaxxing",
 ];
 
@@ -69,7 +68,7 @@ export default function NowPlaying() {
     >
       {/* Quantum animation when playing, dot when not */}
       {track.isPlaying ? (
-        <l-quantum size="18" speed="3.5" color="#1DB954" />
+        <l-quantum size="22" speed="1.75" color="#1DB954" />
       ) : (
         <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-fg-tertiary)]" />
       )}
