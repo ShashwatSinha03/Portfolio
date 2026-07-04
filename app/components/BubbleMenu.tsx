@@ -99,6 +99,7 @@ export default function BubbleMenu({
     "gap-4 px-8",
     "pointer-events-none",
     "z-[1001]",
+    "group",
     className,
   ]
     .filter(Boolean)
@@ -284,49 +285,68 @@ export default function BubbleMenu({
           <div />
         )}
 
-        <button
-          type="button"
-          className={[
-            "bubble toggle-bubble menu-btn",
-            isMenuOpen ? "open" : "",
-            "inline-flex flex-col items-center justify-center",
-            "rounded-full",
-            "bg-white",
-            "shadow-[0_4px_16px_rgba(0,0,0,0.12)]",
-            "pointer-events-auto",
-            "w-12 h-12 md:w-14 md:h-14",
-            "border-0 cursor-pointer p-0",
-            "will-change-transform",
-          ].join(" ")}
-          onClick={handleToggle}
-          aria-label={menuAriaLabel}
-          aria-pressed={isMenuOpen}
-          style={{ background: menuBg }}
-        >
+        <div className="flex items-center gap-3 pointer-events-auto">
+          {/* Subtle hint — hidden on mobile */}
           <span
-            className="menu-line block mx-auto rounded-[2px]"
-            style={{
-              width: 26,
-              height: 2,
-              background: menuContentColor,
-              transform: isMenuOpen
-                ? "translateY(4px) rotate(45deg)"
-                : "none",
-            }}
-          />
-          <span
-            className="menu-line short block mx-auto rounded-[2px]"
-            style={{
-              marginTop: "6px",
-              width: 26,
-              height: 2,
-              background: menuContentColor,
-              transform: isMenuOpen
-                ? "translateY(-4px) rotate(-45deg)"
-                : "none",
-            }}
-          />
-        </button>
+            className={[
+              "hidden sm:flex items-center gap-1.5",
+              "text-[10px] tracking-[0.15em] uppercase",
+              "text-[var(--color-fg-tertiary)]",
+              "transition-all duration-500 ease-out",
+              isMenuOpen
+                ? "opacity-0 translate-x-2"
+                : "opacity-40 group-hover:opacity-70",
+            ].join(" ")}
+          >
+            explore
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="translate-y-[0.5px]">
+              <path d="M2 6h7m0 0L6.5 3.5M9 6L6.5 8.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </span>
+
+          <button
+            type="button"
+            className={[
+              "bubble toggle-bubble menu-btn",
+              isMenuOpen ? "open" : "",
+              "inline-flex flex-col items-center justify-center",
+              "rounded-full",
+              "bg-white",
+              "shadow-[0_4px_16px_rgba(0,0,0,0.12)]",
+              "w-12 h-12 md:w-14 md:h-14",
+              "border-0 cursor-pointer p-0",
+              "will-change-transform",
+            ].join(" ")}
+            onClick={handleToggle}
+            aria-label={menuAriaLabel}
+            aria-pressed={isMenuOpen}
+            style={{ background: menuBg }}
+          >
+            <span
+              className="menu-line block mx-auto rounded-[2px]"
+              style={{
+                width: 26,
+                height: 2,
+                background: menuContentColor,
+                transform: isMenuOpen
+                  ? "translateY(4px) rotate(45deg)"
+                  : "none",
+              }}
+            />
+            <span
+              className="menu-line short block mx-auto rounded-[2px]"
+              style={{
+                marginTop: "6px",
+                width: 26,
+                height: 2,
+                background: menuContentColor,
+                transform: isMenuOpen
+                  ? "translateY(-4px) rotate(-45deg)"
+                  : "none",
+              }}
+            />
+          </button>
+        </div>
       </nav>
 
       {showOverlay && (
