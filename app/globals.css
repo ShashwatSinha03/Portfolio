@@ -68,6 +68,14 @@
   to { opacity: 1; transform: translateY(0); clip-path: inset(0 0 0 0); }
 }
 
+@keyframes wiggle {
+  0%, 100% { rotate: 0deg; }
+  20% { rotate: -2deg; }
+  40% { rotate: 2deg; }
+  60% { rotate: -1deg; }
+  80% { rotate: 1deg; }
+}
+
 /* === Noise texture overlay === */
 .noise::before {
   content: "";

@@ -286,21 +286,23 @@ export default function BubbleMenu({
         )}
 
         <div className="flex items-center gap-3 pointer-events-auto">
-          {/* Subtle hint — hidden on mobile */}
+          {/* Quirky hint — hidden on mobile */}
           <span
             className={[
-              "hidden sm:flex items-center gap-1.5",
-              "text-[10px] tracking-[0.15em] uppercase",
-              "text-[var(--color-fg-tertiary)]",
+              "hidden sm:flex items-center gap-2",
+              "text-xs font-primary font-medium italic",
+              "text-[var(--color-fg-secondary)]",
               "transition-all duration-500 ease-out",
+              isMenuOpen ? "" : "animate-[wiggle_3s_ease-in-out_infinite]",
               isMenuOpen
                 ? "opacity-0 translate-x-2"
-                : "opacity-40 group-hover:opacity-70",
+                : "opacity-70 group-hover:opacity-100",
             ].join(" ")}
           >
-            explore
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" className="translate-y-[0.5px]">
-              <path d="M2 6h7m0 0L6.5 3.5M9 6L6.5 8.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            tap to peek ✦
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="translate-y-[0.5px] -ml-0.5">
+              <path d="M2 7h8m0 0L7 4.5M10 7l-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 1.5" className="opacity-30"/>
             </svg>
           </span>
 
