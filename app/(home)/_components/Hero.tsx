@@ -44,7 +44,7 @@ export default function Hero() {
           }}
         >
           <span className="h-px w-8 bg-[var(--color-border-primary)]" />
-          <span className="text-xs tracking-[0.2em] uppercase text-[var(--color-fg-tertiary)] font-primary">
+          <span className="text-sm tracking-[0.2em] uppercase text-[var(--color-fg-tertiary)] font-primary">
             Shashwat Sinha
           </span>
         </div>
