@@ -131,8 +131,7 @@ export default function ProjectDetailModal() {
         ) : project ? (
           <div className="space-y-8">
             <div>
-              <h2
-                className="text-2xl font-semibold tracking-tight sm:text-3xl"
+              <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl font-primary"
                 style={{ color: accent }}
               >
                 {project.title}
@@ -163,7 +162,7 @@ export default function ProjectDetailModal() {
               { label: "Outcome", content: project.outcome },
             ].map(({ label, content }) => (
               <div key={label}>
-                <h3 className="mb-2 text-sm font-medium text-[var(--color-fg-primary)]">
+                <h3 className="mb-2 text-sm font-medium text-[var(--color-fg-primary)] font-primary">
                   {label}
                 </h3>
                 <p className="text-sm leading-relaxed text-[var(--color-fg-secondary)]">
@@ -200,7 +199,7 @@ export default function ProjectDetailModal() {
 
             {project.screenshots && project.screenshots.length > 0 && (
               <div className="space-y-4">
-                <h3 className="text-sm font-medium text-[var(--color-fg-primary)]">
+                <h3 className="text-sm font-medium text-[var(--color-fg-primary)] font-primary">
                   Screenshots
                 </h3>
                 <div className="grid gap-4">

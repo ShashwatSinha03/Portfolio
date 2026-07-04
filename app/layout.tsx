@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Exo, Tenor_Sans } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
@@ -8,10 +8,17 @@ import ScrollProgress from "./components/ScrollProgress";
 import ColorBends from "./components/ColorBends";
 import NowPlaying from "./components/NowPlaying";
 
-const inter = Inter({
+const exo = Exo({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-exo",
+  display: "swap",
+});
+
+const tenor = Tenor_Sans({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-tenor",
   display: "swap",
 });
 
@@ -68,8 +75,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
-      <body className="min-h-full" style={{ fontFamily: "var(--font-inter)" }}>
+    <html lang="en" className={`${exo.variable} ${tenor.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
+      <body className="min-h-full font-secondary">
         {/* Skip to content */}
         <a
           href="#main-content"

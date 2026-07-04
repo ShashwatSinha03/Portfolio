@@ -54,7 +54,7 @@ export default function ProjectCard({
         <div className="mt-3 flex flex-1 flex-col">
           {/* Title row with arrow */}
           <div className="flex items-center gap-2">
-            <h3 className="text-sm font-medium text-[var(--color-fg-primary)] transition-colors duration-300">
+            <h3 className="text-sm font-medium text-[var(--color-fg-primary)] transition-colors duration-300 font-primary">
               {project.title}
             </h3>
             <span className="-translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100">

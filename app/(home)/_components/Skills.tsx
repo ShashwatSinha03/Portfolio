@@ -35,7 +35,7 @@ function SkillBar({ name, description, index }: { name: string; description: str
       }}
     >
       <div className="flex items-center justify-between">
-        <h3 className="text-sm font-medium text-[var(--color-fg-primary)]">
+        <h3 className="text-sm font-medium text-[var(--color-fg-primary)] font-primary">
           {name}
         </h3>
         <span className="text-[10px] uppercase tracking-widest text-[var(--color-fg-tertiary)]">
@@ -66,7 +66,7 @@ export default function Skills() {
         <div className="grid gap-16 sm:grid-cols-3">
           {/* Left: section title */}
           <div>
-            <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl">
+            <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl font-primary">
               Skills
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-[var(--color-fg-tertiary)]">

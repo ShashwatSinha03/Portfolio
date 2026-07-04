@@ -44,14 +44,14 @@ export default function Hero() {
           }}
         >
           <span className="h-px w-8 bg-[var(--color-border-primary)]" />
-          <span className="text-xs tracking-[0.2em] uppercase text-[var(--color-fg-tertiary)]">
+          <span className="text-xs tracking-[0.2em] uppercase text-[var(--color-fg-tertiary)] font-primary">
             Shashwat Sinha
           </span>
         </div>
 
         {/* Dramatic main headline — staggered entrance */}
         <h1
-          className="mt-8 text-[clamp(2.8rem,9vw,8rem)] font-semibold leading-[0.85] tracking-[-0.04em] text-[var(--color-fg-primary)]"
+          className="mt-8 text-[clamp(2.8rem,9vw,8rem)] font-semibold leading-[0.85] tracking-[-0.04em] text-[var(--color-fg-primary)] font-primary"
           style={{
             animation:
               "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both",
@@ -79,7 +79,7 @@ export default function Hero() {
             <span className="text-[var(--color-fg-tertiary)]">// </span>
             <span
               ref={roleRef}
-              className="inline-block text-[var(--color-fg-primary)] transition-all duration-200"
+              className="inline-block text-[var(--color-fg-primary)] transition-all duration-200 font-primary"
             >
               Software Engineer
             </span>

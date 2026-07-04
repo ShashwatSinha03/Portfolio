@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex flex-col items-center justify-between gap-8 sm:flex-row">
           {/* Left: brand */}
           <div className="flex flex-col items-center sm:items-start">
-            <span className="text-sm font-medium text-[var(--color-fg-primary)]">
+            <span className="text-sm font-medium text-[var(--color-fg-primary)] font-primary">
               {siteConfig.name}
             </span>
             <span className="mt-1 text-xs text-[var(--color-fg-tertiary)]">

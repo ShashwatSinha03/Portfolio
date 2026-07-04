@@ -6,7 +6,7 @@ export default function SelectedWork() {
     return (
       <section id="work" className="py-24 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 sm:px-8">
-          <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl">
+          <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl font-primary">
             Selected Work
           </h2>
           <p className="mt-12 text-[var(--color-fg-tertiary)]">Coming soon</p>
@@ -20,7 +20,7 @@ export default function SelectedWork() {
       <div className="mx-auto max-w-7xl px-6 sm:px-8">
         {/* Section header */}
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl">
+          <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl font-primary">
             Selected Work
           </h2>
           <span className="hidden text-xs text-[var(--color-fg-tertiary)] sm:block">

@@ -408,7 +408,7 @@ export default function BubbleMenu({
                   }}
                 >
                   <span
-                    className="pill-label inline-block"
+                    className="pill-label inline-block font-primary"
                     style={{
                       willChange: "transform, opacity",
                       height: "1.2em",

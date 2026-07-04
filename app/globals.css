@@ -166,6 +166,27 @@ html {
   color: var(--color-fg-primary);
 }
 
+/* === Font Families === */
+.font-primary {
+  font-family: var(--font-exo), system-ui, sans-serif;
+}
+
+.font-secondary {
+  font-family: var(--font-tenor), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6,
+.font-primary-heading {
+  font-family: var(--font-exo), system-ui, sans-serif;
+  font-weight: 700;
+}
+
+/* Override body back to Exo for heavy/primary text contexts */
+.font-primary-heavy {
+  font-family: var(--font-exo), system-ui, sans-serif;
+  font-weight: 800;
+}
+
 /* Respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,

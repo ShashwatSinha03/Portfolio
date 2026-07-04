@@ -9,7 +9,7 @@ export default function Error({
 }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-[var(--color-bg-primary)] px-6">
-      <h2 className="text-lg font-medium text-[var(--color-fg-primary)]">
+      <h2 className="text-lg font-medium text-[var(--color-fg-primary)] font-primary">
         Something went wrong
       </h2>
       <p className="mt-2 text-sm text-[var(--color-fg-secondary)]">

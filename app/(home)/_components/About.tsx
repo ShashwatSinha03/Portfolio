@@ -12,7 +12,7 @@ export default function About() {
                   About
                 </span>
               </div>
-              <h2 className="mt-6 text-3xl font-medium leading-tight tracking-tight text-[var(--color-fg-primary)] sm:text-4xl">
+              <h2 className="mt-6 text-3xl font-medium leading-tight tracking-tight text-[var(--color-fg-primary)] sm:text-4xl font-primary">
                 I build software
                 <br />
                 <span className="text-[var(--color-fg-tertiary)]">that lasts.</span>

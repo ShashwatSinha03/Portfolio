@@ -119,7 +119,7 @@ export default function ContactForm() {
                   Contact
                 </span>
               </div>
-              <h2 className="mt-6 text-3xl font-medium leading-tight tracking-tight text-[var(--color-fg-primary)] sm:text-4xl">
+              <h2 className="mt-6 text-3xl font-medium leading-tight tracking-tight text-[var(--color-fg-primary)] sm:text-4xl font-primary">
                 Let&apos;s work
                 <br />
                 <span className="text-[var(--color-fg-tertiary)]">together.</span>
