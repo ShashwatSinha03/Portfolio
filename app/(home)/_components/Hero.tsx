@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
+
 const roles = [
   "Software Engineer",
   "AI Engineer",

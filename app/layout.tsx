@@ -78,7 +78,9 @@ export default function RootLayout({
           Skip to content
         </a>
 
-        <NowPlaying />
+        <div className="fixed top-6 left-1/2 z-[1002] -translate-x-1/2">
+          <NowPlaying />
+        </div>
 
         {/* Ambient elements */}
         <div className="fixed inset-0 z-0 pointer-events-none">
