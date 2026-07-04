@@ -57,9 +57,9 @@ export default function Hero() {
               "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both",
           }}
         >
-          I build
+          Building
           <br />
-          <span className="text-[var(--color-fg-tertiary)]">systems that</span>
+          <span className="text-[var(--color-fg-tertiary)]">system that</span>
           <br />
           <span className="relative inline-block">
             last.
