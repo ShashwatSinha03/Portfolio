@@ -24,8 +24,9 @@ export default function NowPlaying() {
   const wasPlayingRef = useRef(false);
 
   useEffect(() => {
-    import("ldrs").then(({ quantum }) => {
+    import("ldrs").then(({ quantum, ping }) => {
       quantum.register();
+      ping.register();
       setMounted(true);
     });
   }, []);
@@ -70,7 +71,7 @@ export default function NowPlaying() {
       {track.isPlaying ? (
         <l-quantum size="22" speed="3.5" color="#1DB954" />
       ) : (
-        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-fg-tertiary)]" />
+        <l-ping size="20" speed="3.8" color="#606260" />
       )}
 
       {/* Text content */}
