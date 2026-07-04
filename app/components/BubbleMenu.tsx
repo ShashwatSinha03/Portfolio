@@ -3,6 +3,7 @@
 import type { CSSProperties, ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import ShinyText from "@/components/ShinyText";
 
 type MenuItem = {
   label: string;
@@ -286,25 +287,33 @@ export default function BubbleMenu({
         )}
 
         <div className="flex items-center gap-3 pointer-events-auto">
-          {/* Quirky hint — hidden on mobile */}
-          <span
+          {/* Shiny hint — hidden on mobile */}
+          <div
             className={[
               "hidden sm:flex items-center gap-2",
-              "text-xs font-primary font-medium italic",
-              "text-[var(--color-fg-secondary)]",
               "transition-all duration-500 ease-out",
-              isMenuOpen ? "" : "animate-[wiggle_3s_ease-in-out_infinite]",
               isMenuOpen
                 ? "opacity-0 translate-x-2"
                 : "opacity-70 group-hover:opacity-100",
             ].join(" ")}
           >
-            tap to peek ✦
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="translate-y-[0.5px] -ml-0.5">
+            <ShinyText
+              text="tap to peek ✦"
+              speed={2.6}
+              delay={0}
+              color="#515151"
+              shineColor="#ffffff"
+              spread={60}
+              direction="left"
+              yoyo={false}
+              pauseOnHover={false}
+              disabled={false}
+            />
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="translate-y-[0.5px] -ml-1">
               <path d="M2 7h8m0 0L7 4.5M10 7l-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="0.5" strokeDasharray="2 1.5" className="opacity-30"/>
             </svg>
-          </span>
+          </div>
 
           <button
             type="button"
