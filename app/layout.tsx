@@ -7,6 +7,7 @@ import TargetCursor from "./components/TargetCursor";
 import ScrollProgress from "./components/ScrollProgress";
 import ColorBends from "./components/ColorBends";
 import NowPlaying from "./components/NowPlaying";
+import PageLoader from "./components/PageLoader";
 
 const exo = Exo({
   subsets: ["latin"],
@@ -77,63 +78,65 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${exo.variable} ${tenor.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
       <body className="min-h-full font-secondary">
-        {/* Skip to content */}
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-[var(--color-fg-inverse)] focus:shadow-lg"
-        >
-          Skip to content
-        </a>
+        <PageLoader>
+          {/* Skip to content */}
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-[var(--color-accent)] focus:px-4 focus:py-2 focus:text-[var(--color-fg-inverse)] focus:shadow-lg"
+          >
+            Skip to content
+          </a>
 
-        <div className="fixed top-6 left-1/2 z-[1002] -translate-x-1/2">
-          <NowPlaying />
-        </div>
+          <div className="fixed top-6 left-1/2 z-[1002] -translate-x-1/2">
+            <NowPlaying />
+          </div>
 
-        {/* Ambient elements */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <ColorBends
-            colors={["#b5b5b5", "#654b92"]}
-            rotation={42}
-            speed={0.39}
-            scale={1}
-            frequency={1.1}
-            warpStrength={1}
-            mouseInfluence={0.75}
-            parallax={0.3}
-            noise={0.22}
-            iterations={2}
-            intensity={2}
-            bandWidth={5}
-            transparent
+          {/* Ambient elements */}
+          <div className="fixed inset-0 z-0 pointer-events-none">
+            <ColorBends
+              colors={["#b5b5b5", "#654b92"]}
+              rotation={42}
+              speed={0.39}
+              scale={1}
+              frequency={1.1}
+              warpStrength={1}
+              mouseInfluence={0.75}
+              parallax={0.3}
+              noise={0.22}
+              iterations={2}
+              intensity={2}
+              bandWidth={5}
+              transparent
+            />
+          </div>
+          <TargetCursor
+            spinDuration={2}
+            hideDefaultCursor
+            parallaxOn
+            hoverDuration={0.2}
+            cursorColor="#ffffff"
+            cursorColorOnTarget="#B497CF"
+            targetSelector="a, button, [role='button'], .cursor-target"
           />
-        </div>
-        <TargetCursor
-          spinDuration={2}
-          hideDefaultCursor
-          parallaxOn
-          hoverDuration={0.2}
-          cursorColor="#ffffff"
-          cursorColorOnTarget="#B497CF"
-          targetSelector="a, button, [role='button'], .cursor-target"
-        />
-        <ScrollProgress />
-        <div className="noise" aria-hidden="true" />
+          <ScrollProgress />
+          <div className="noise" aria-hidden="true" />
 
-        <Script
-          id="json-ld"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-        {process.env.NODE_ENV === "production" && (
           <Script
-            defer
-            data-domain="shashwatsinha.com"
-            src="https://plausible.io/js/script.js"
+            id="json-ld"
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
           />
-        )}
-        <main id="main-content" className="flex min-h-screen flex-col">
-          {children}
-        </main>
+          {process.env.NODE_ENV === "production" && (
+            <Script
+              defer
+              data-domain="shashwatsinha.com"
+              src="https://plausible.io/js/script.js"
+            />
+          )}
+          <main id="main-content" className="flex min-h-screen flex-col">
+            {children}
+          </main>
+        </PageLoader>
       </body>
     </html>
   );
