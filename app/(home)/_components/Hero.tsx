@@ -59,7 +59,7 @@ export default function Hero() {
         >
           Building
           <br />
-          <span className="text-[var(--color-fg-tertiary)]">system that</span>
+          <span className="text-[var(--color-fg-tertiary)]">system </span><span className="text-[var(--color-fg-primary)]">that</span>
           <br />
           <span className="relative inline-block text-[var(--color-fg-tertiary)]">
             last.
