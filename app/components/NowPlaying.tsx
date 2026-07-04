@@ -90,7 +90,7 @@ export default function NowPlaying() {
       )}
 
       {/* Text content */}
-      <div className="flex flex-col">
+      <div className="flex flex-col font-primary">
         <span className="text-[11px] text-[var(--color-fg-tertiary)] leading-none">
           {track.isPlaying && messageRef.current
             ? messageRef.current
