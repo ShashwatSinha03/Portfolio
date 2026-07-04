@@ -1,18 +1,51 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { SpotifyTrack } from "@/lib/spotify";
+
+const messages = [
+  "in the zone",
+  "big mood",
+  "now spinning",
+  "on easy mode",
+  "barely working",
+  "touching grass",
+  "fueling the delulu",
+  "just vibing",
+  "cooldown",
+  "avoiding responsibilities",
+  "rotmaxxing",
+];
 
 export default function NowPlaying() {
   const [track, setTrack] = useState<SpotifyTrack | null>(null);
   const [loading, setLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const messageRef = useRef<string | null>(null);
+  const wasPlayingRef = useRef(false);
+
+  useEffect(() => {
+    import("ldrs").then(({ quantum }) => {
+      quantum.register();
+      setMounted(true);
+    });
+  }, []);
 
   useEffect(() => {
     const fetchTrack = async () => {
       try {
         const res = await fetch("/api/spotify/now-playing");
         const json = await res.json();
-        setTrack(json.data);
+        const newTrack = json.data as SpotifyTrack | null;
+
+        if (newTrack?.isPlaying && !wasPlayingRef.current) {
+          const available = messages.filter((m) => m !== messageRef.current);
+          messageRef.current =
+            available[Math.floor(Math.random() * available.length)];
+        }
+
+        wasPlayingRef.current = newTrack?.isPlaying ?? false;
+        setTrack(newTrack);
       } catch {
         setTrack(null);
       } finally {
@@ -25,7 +58,7 @@ export default function NowPlaying() {
     return () => clearInterval(interval);
   }, []);
 
-  if (loading || !track) return null;
+  if (loading || !track || !mounted) return null;
 
   return (
     <a
@@ -34,22 +67,23 @@ export default function NowPlaying() {
       rel="noopener noreferrer"
       className="group flex items-center gap-3 rounded-full border border-[var(--color-border-primary)] bg-[var(--color-bg-elevated)]/80 px-4 py-2 text-xs backdrop-blur-md transition-all duration-300 hover:border-[var(--color-border-hover)] hover:bg-[var(--color-bg-elevated)]"
     >
-      {/* Status dot */}
-      <span
-        className={`h-1.5 w-1.5 flex-shrink-0 rounded-full ${
-          track.isPlaying
-            ? "bg-[#1DB954] animate-pulse"
-            : "bg-[var(--color-fg-tertiary)]"
-        }`}
-      />
+      {/* Quantum animation when playing, dot when not */}
+      {track.isPlaying ? (
+        <l-quantum size="18" speed="3.5" color="#1DB954" />
+      ) : (
+        <span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-[var(--color-fg-tertiary)]" />
+      )}
 
-      {/* Track info */}
+      {/* Text content */}
       <div className="flex flex-col">
-        <span className="text-[11px] text-[var(--color-fg-tertiary)]">
-          {track.isPlaying ? "Now Playing" : "Last Played"}
+        <span className="text-[11px] text-[var(--color-fg-tertiary)] leading-none">
+          {track.isPlaying && messageRef.current
+            ? messageRef.current
+            : "...clocked out ig"}
         </span>
-        <span className="max-w-[180px] truncate text-[11px] text-[var(--color-fg-primary)] group-hover:underline">
-          {track.title} — {track.artist}
+        <span className="max-w-[160px] truncate text-[11px] text-[var(--color-fg-primary)] group-hover:underline leading-tight">
+          {track.title}
+          <span className="text-[var(--color-fg-tertiary)]"> — {track.artist}</span>
         </span>
       </div>
 
