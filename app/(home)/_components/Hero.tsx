@@ -44,7 +44,7 @@ export default function Hero() {
           }}
         >
           <span className="h-px w-8 bg-[var(--color-border-primary)]" />
-          <span className="text-sm tracking-[0.2em] uppercase text-[var(--color-fg-tertiary)] font-primary">
+          <span className="text-base tracking-[0.2em] uppercase text-[var(--color-fg-tertiary)] font-primary">
             Shashwat Sinha
           </span>
         </div>
@@ -85,8 +85,8 @@ export default function Hero() {
             </span>
           </span>
           <span className="h-3 w-px bg-[var(--color-border-primary)]" />
-          <span className="text-xs text-[var(--color-fg-tertiary)]">
-            AI · Systems · Product
+          <span className="text-sm text-[var(--color-fg-tertiary)]">
+            Think · Build · Iterate
           </span>
         </div>
 
