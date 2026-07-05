@@ -62,7 +62,7 @@ export default function Hero() {
           <span className="text-[var(--color-fg-tertiary)]">systems that</span>
           <br />
           <span className="relative inline-block" style={{ fontFamily: "var(--font-museo)", fontWeight: 700, fontSize: "0.75em", letterSpacing: "0.06em" }}>
-            last.
+            LAST.
             <span className="absolute -bottom-2 left-0 h-px w-full bg-[var(--color-fg-primary)]/20" />
           </span>
         </h1>
