@@ -90,24 +90,28 @@ export default function Hero() {
           </span>
         </div>
 
-        {/* Tech badges — staggered */}
+        {/* KPI strip — staggered */}
         <div
-          className="mt-16 flex flex-wrap gap-3"
+          className="mt-12 flex items-center gap-5 text-xs text-[var(--color-fg-tertiary)]"
           style={{
             animation:
               "fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1s both",
           }}
         >
-          {["Next.js", "TypeScript", "React", "Python", "Rust", "PostgreSQL", "AI/ML", "Go", "Kubernetes"].map(
-            (tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-[var(--color-border-primary)] px-3 py-1.5 text-xs text-[var(--color-fg-tertiary)] transition-colors hover:border-[var(--color-border-hover)] hover:text-[var(--color-fg-secondary)]"
-              >
-                {tech}
-              </span>
-            )
-          )}
+          <span className="flex items-center gap-1.5">
+            <span className="text-[var(--color-fg-primary)] font-primary font-semibold">5+</span>
+            Languages
+          </span>
+          <span className="h-3 w-px bg-[var(--color-border-primary)]" />
+          <span className="flex items-center gap-1.5">
+            <span className="text-[var(--color-fg-primary)] font-primary font-semibold">Full Stack</span>
+            Scope
+          </span>
+          <span className="h-3 w-px bg-[var(--color-border-primary)]" />
+          <span className="flex items-center gap-1.5">
+            <span className="text-[var(--color-fg-primary)] font-primary font-semibold">AI/ML</span>
+            Focus
+          </span>
         </div>
 
         {/* Scroll indicator */}
