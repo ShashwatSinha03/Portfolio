@@ -4,10 +4,10 @@ import { useEffect, useRef } from "react";
 
 
 const roles = [
-  "Software Engineer",
   "AI Engineer",
+  "Data Analyst",
   "Full Stack Developer",
-  "System Designer",
+  "Software Engineer",
 ];
 
 export default function Hero() {
