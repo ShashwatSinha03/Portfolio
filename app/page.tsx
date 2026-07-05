@@ -1,4 +1,3 @@
-import { Suspense, lazy } from "react";
 import Hero from "./(home)/_components/Hero";
 import About from "./(home)/_components/About";
 import Skills from "./(home)/_components/Skills";
@@ -7,10 +6,6 @@ import ContactForm from "./(home)/_components/ContactForm";
 import Footer from "./(home)/_components/Footer";
 import BubbleMenu from "./components/BubbleMenu";
 import ScrollToTop from "./components/ScrollToTop";
-
-const ProjectDetailModal = lazy(
-  () => import("./(home)/_components/ProjectDetailModal")
-);
 
 const navItems = [
   {
@@ -87,9 +82,6 @@ export default function Home() {
       <section className="relative section-bg-alt">
         <div className="section-divider" />
         <ContactForm />
-        <Suspense fallback={null}>
-          <ProjectDetailModal />
-        </Suspense>
       </section>
 
       <Footer />

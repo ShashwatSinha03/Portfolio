@@ -6,6 +6,7 @@ export const projects: Project[] = [
     title: "Surge",
     description:
       "An AI-powered development platform that accelerates the entire software delivery lifecycle.",
+    oneLineDesc: "AI-assisted development platform for modern engineering teams.",
     role: "Founding Engineer",
     techStack: ["Next.js", "TypeScript", "Python", "OpenAI", "PostgreSQL"],
     problem:
@@ -46,6 +47,7 @@ export const projects: Project[] = [
     title: "NuvoraOS",
     description:
       "An intelligent operating system for AI-native workflows and autonomous agents.",
+    oneLineDesc: "Agent-native OS for autonomous AI workload orchestration.",
     role: "Systems Engineer",
     techStack: ["React", "Rust", "Machine Learning", "Distributed Systems"],
     problem:

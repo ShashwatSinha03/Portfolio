@@ -1,7 +1,12 @@
+"use client";
+
+import { useState } from "react";
 import { projects } from "@/data/projects";
-import ProjectCard from "./ProjectCard";
+import ProjectPanel from "./ProjectPanel";
 
 export default function SelectedWork() {
+  const [openSlug, setOpenSlug] = useState<string | null>(null);
+
   if (projects.length === 0) {
     return (
       <section id="work" className="py-24 sm:py-32">
@@ -15,9 +20,13 @@ export default function SelectedWork() {
     );
   }
 
+  const toggleProject = (slug: string) => {
+    setOpenSlug((prev) => (prev === slug ? null : slug));
+  };
+
   return (
     <section id="work" className="py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 sm:px-8">
+      <div className="mx-auto max-w-5xl px-6 sm:px-8">
         {/* Section header */}
         <div className="flex items-center justify-between">
           <h2 className="text-2xl font-medium tracking-tight text-[var(--color-fg-primary)] sm:text-3xl font-primary">
@@ -28,13 +37,80 @@ export default function SelectedWork() {
           </span>
         </div>
 
-        {/* Uniform grid: all cards same size */}
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 sm:gap-8">
-          {projects.map((project) => (
-            <div key={project.slug} className="h-full">
-              <ProjectCard project={project} />
-            </div>
-          ))}
+        {/* Accordion list */}
+        <div className="mt-12 space-y-0">
+          {projects.map((project, i) => {
+            const isOpen = openSlug === project.slug;
+
+            return (
+              <div key={project.slug}>
+                {/* Row header */}
+                <button
+                  type="button"
+                  onClick={() => toggleProject(project.slug)}
+                  className="group flex w-full items-center gap-4 py-5 text-left transition-colors hover:bg-[var(--color-bg-surface-hover)]/30 -mx-4 px-4 rounded-lg"
+                >
+                  {/* Number */}
+                  <span className="hidden w-6 text-[11px] font-mono text-[var(--color-fg-tertiary)] sm:block">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+
+                  {/* Title */}
+                  <span className="flex-1 text-base font-medium text-[var(--color-fg-primary)] font-primary sm:text-lg">
+                    {project.title}
+                  </span>
+
+                  {/* One-line description */}
+                  <span className="hidden max-w-[240px] truncate text-sm text-[var(--color-fg-tertiary)] lg:block">
+                    {project.oneLineDesc}
+                  </span>
+
+                  {/* Chevron */}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className={`flex-shrink-0 text-[var(--color-fg-tertiary)] transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  >
+                    <path
+                      d="M4 6l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                {/* Expanded panel */}
+                <div
+                  className="overflow-hidden transition-all duration-400 ease-out"
+                  style={{
+                    maxHeight: isOpen ? "800px" : "0px",
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                >
+                  <div className="pb-6">
+                    <div
+                      className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-6 py-5"
+                      style={{
+                        borderLeftColor: project.accentColor,
+                        borderLeftWidth: "2px",
+                      }}
+                    >
+                      <ProjectPanel project={project} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Separator */}
+                <div className="h-px bg-[var(--color-border-primary)]" />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

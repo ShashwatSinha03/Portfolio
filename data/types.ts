@@ -2,6 +2,7 @@ export interface Project {
   slug: string;
   title: string;
   description: string;
+  oneLineDesc: string;
   role: string;
   techStack: string[];
   problem: string;
