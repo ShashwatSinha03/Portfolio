@@ -98,20 +98,11 @@ export default function Hero() {
               "fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) 1s both",
           }}
         >
-          <span className="flex items-center gap-1.5">
-            <span className="text-[var(--color-fg-primary)] font-primary font-semibold">5+</span>
-            Languages
-          </span>
+          <span className="text-[var(--color-fg-primary)] font-primary font-semibold">AI Systems</span>
           <span className="h-3 w-px bg-[var(--color-border-primary)]" />
-          <span className="flex items-center gap-1.5">
-            <span className="text-[var(--color-fg-primary)] font-primary font-semibold">Full Stack</span>
-            Scope
-          </span>
+          <span className="text-[var(--color-fg-primary)] font-primary font-semibold">Software Development</span>
           <span className="h-3 w-px bg-[var(--color-border-primary)]" />
-          <span className="flex items-center gap-1.5">
-            <span className="text-[var(--color-fg-primary)] font-primary font-semibold">AI/ML</span>
-            Focus
-          </span>
+          <span className="text-[var(--color-fg-primary)] font-primary font-semibold">Leadership</span>
         </div>
 
         {/* Scroll indicator */}
