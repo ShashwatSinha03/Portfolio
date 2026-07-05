@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Exo, Tenor_Sans } from "next/font/google";
+import { Exo, Tenor_Sans, Stalinist_One } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
@@ -20,6 +20,13 @@ const tenor = Tenor_Sans({
   subsets: ["latin"],
   weight: ["400"],
   variable: "--font-tenor",
+  display: "swap",
+});
+
+const stalinist = Stalinist_One({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-stalinist",
   display: "swap",
 });
 
@@ -76,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${exo.variable} ${tenor.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
+    <html lang="en" className={`${exo.variable} ${tenor.variable} ${stalinist.variable} h-full antialiased`} style={{ colorScheme: "dark" }}>
       <body className="min-h-full font-secondary">
         <PageLoader>
           {/* Skip to content */}
