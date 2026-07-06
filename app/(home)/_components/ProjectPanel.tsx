@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import type { Project } from "@/data/types";
 
 type Tab = "overview" | "solution" | "gallery";
@@ -13,14 +13,6 @@ const tabs: { key: Tab; label: string }[] = [
 
 export default function ProjectPanel({ project }: { project: Project }) {
   const [activeTab, setActiveTab] = useState<Tab>("overview");
-  const [contentHeight, setContentHeight] = useState(0);
-  const contentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  }, [activeTab]);
 
   const hasGallery = project.screenshots && project.screenshots.length > 0;
 
@@ -54,7 +46,6 @@ export default function ProjectPanel({ project }: { project: Project }) {
             </svg>
           </a>
         )}
-        <span className="ml-auto text-[11px] text-[var(--color-fg-tertiary)]">{project.role}</span>
       </div>
 
       {/* Tech pills */}
@@ -96,7 +87,7 @@ export default function ProjectPanel({ project }: { project: Project }) {
       </div>
 
       {/* Tab content with crossfade */}
-      <div className="relative mt-4 min-h-[100px]" ref={contentRef}>
+      <div className="relative mt-4 min-h-[100px]">
         <TabContent active={activeTab === "overview"} project={project} type="overview" />
         <TabContent active={activeTab === "solution"} project={project} type="solution" />
         {hasGallery && <TabContent active={activeTab === "gallery"} project={project} type="gallery" />}
@@ -141,31 +132,27 @@ function TabContent({
       )}
 
       {type === "gallery" && project.screenshots && (
-        <div className="space-y-4">
+        <div className="max-h-[320px] overflow-y-auto space-y-3 pr-1 scrollbar-thin">
           {project.screenshots.map((img, i) => (
             <div
               key={i}
-              className="overflow-hidden rounded-lg border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)]"
+              className="overflow-hidden border border-[var(--color-border-primary)] bg-[var(--color-bg-elevated)]"
             >
-              <div className="flex aspect-video items-center justify-center bg-[var(--color-bg-elevated)]">
-                {img.src ? (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="h-full w-full object-cover"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = "none";
-                      (e.target as HTMLImageElement).parentElement!.classList.add("flex");
-                      (e.target as HTMLImageElement).parentElement!.innerHTML =
-                        '<span class="text-xs text-[var(--color-fg-tertiary)]">Image unavailable</span>';
-                    }}
-                  />
-                ) : (
-                  <span className="text-xs text-[var(--color-fg-tertiary)]">No preview</span>
-                )}
-              </div>
-              <p className="px-4 py-2 text-[11px] text-[var(--color-fg-tertiary)]">{img.alt}</p>
+              {img.src ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  className="w-full object-contain"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).style.display = "none";
+                    (e.target as HTMLImageElement).parentElement!.innerHTML =
+                      '<span class="flex items-center justify-center py-8 text-xs text-[var(--color-fg-tertiary)]">Image unavailable</span>';
+                  }}
+                />
+              ) : (
+                <span className="flex items-center justify-center py-8 text-xs text-[var(--color-fg-tertiary)]">No preview</span>
+              )}
             </div>
           ))}
         </div>

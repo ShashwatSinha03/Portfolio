@@ -48,22 +48,22 @@ export default function SelectedWork() {
                 <button
                   type="button"
                   onClick={() => toggleProject(project.slug)}
-                  className="group flex w-full items-center gap-4 py-5 text-left transition-colors hover:bg-[var(--color-bg-surface-hover)]/30 -mx-4 px-4 rounded-lg"
+                  className="group flex w-full items-start gap-4 py-5 text-left transition-colors hover:bg-[var(--color-bg-surface-hover)]/30 -mx-4 px-4 rounded-lg"
                 >
                   {/* Number */}
-                  <span className="hidden w-6 text-[11px] font-mono text-[var(--color-fg-tertiary)] sm:block">
+                  <span className="hidden w-6 pt-0.5 text-[11px] font-mono text-[var(--color-fg-tertiary)] sm:block">
                     {String(i + 1).padStart(2, "0")}
                   </span>
 
-                  {/* Title */}
-                  <span className="flex-1 text-base font-medium text-[var(--color-fg-primary)] font-primary sm:text-lg">
-                    {project.title}
-                  </span>
-
-                  {/* One-line description */}
-                  <span className="hidden max-w-[240px] truncate text-sm text-[var(--color-fg-tertiary)] lg:block">
-                    {project.oneLineDesc}
-                  </span>
+                  {/* Title + description stacked */}
+                  <div className="flex-1 min-w-0">
+                    <span className="text-base font-medium text-[var(--color-fg-primary)] font-primary sm:text-lg">
+                      {project.title}
+                    </span>
+                    <p className="mt-0.5 text-sm text-[var(--color-fg-tertiary)] truncate">
+                      {project.oneLineDesc}
+                    </p>
+                  </div>
 
                   {/* Chevron */}
                   <svg
@@ -71,7 +71,7 @@ export default function SelectedWork() {
                     height="16"
                     viewBox="0 0 16 16"
                     fill="none"
-                    className={`flex-shrink-0 text-[var(--color-fg-tertiary)] transition-transform duration-300 ${
+                    className={`flex-shrink-0 mt-1.5 text-[var(--color-fg-tertiary)] transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
@@ -95,7 +95,7 @@ export default function SelectedWork() {
                 >
                   <div className="pb-6">
                     <div
-                      className="rounded-xl border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-6 py-5"
+                      className="border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-6 py-5"
                       style={{
                         borderLeftColor: project.accentColor,
                         borderLeftWidth: "2px",
