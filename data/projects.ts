@@ -24,19 +24,19 @@ export const projects: Project[] = [
     screenshots: [
       {
         src: "https://picsum.photos/seed/surge-1/1200/750",
-        alt: "Surge dashboard showing AI code review results",
+        alt: "AI-powered code review dashboard showing pull request analysis with inline suggestions, issue detection, and automated review summaries across multiple repositories.",
         width: 1200,
         height: 750,
       },
       {
         src: "https://picsum.photos/seed/surge-2/1200/750",
-        alt: "Surge AI-powered PR summary generation",
+        alt: "Context-aware PR summary generation that understands your codebase conventions, automatically drafts release notes, and flags potential breaking changes before merge.",
         width: 1200,
         height: 750,
       },
       {
         src: "https://picsum.photos/seed/surge-3/1200/750",
-        alt: "Surge real-time collaboration interface",
+        alt: "Real-time collaboration interface with shared sessions, in-editor AI chat, and live artifact previews — designed for teams that iterate fast together.",
         width: 1200,
         height: 750,
       },
@@ -71,13 +71,13 @@ export const projects: Project[] = [
     screenshots: [
       {
         src: "https://picsum.photos/seed/nuvora-1/1200/750",
-        alt: "NuvoraOS agent runtime dashboard",
+        alt: "Agent runtime dashboard visualizing real-time resource allocation, process scheduling, and inter-agent communication across a distributed swarm of autonomous AI agents.",
         width: 1200,
         height: 750,
       },
       {
         src: "https://picsum.photos/seed/nuvora-2/1200/750",
-        alt: "NuvoraOS agent lifecycle management",
+        alt: "Agent lifecycle management interface showing checkpoint-based fault tolerance, GPU scheduling, and health monitoring for long-running AI workloads.",
         width: 1200,
         height: 750,
       },
