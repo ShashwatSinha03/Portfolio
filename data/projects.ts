@@ -16,23 +16,29 @@ export const projects: Project[] = [
     outcome:
       "Shipped the MVP in 8 weeks. Early adopters reported a 35% reduction in development cycle time. Used by 3 engineering teams in private beta, processing over 2,000 automated code reviews per month.",
     thumbnail: {
-      src: "/images/projects/surge-thumb.jpg",
+      src: "https://picsum.photos/seed/surge-thumb/1200/630",
       alt: "Surge AI development platform interface",
       width: 1200,
       height: 630,
     },
     screenshots: [
       {
-        src: "/images/projects/surge-1.jpg",
+        src: "https://picsum.photos/seed/surge-1/1200/750",
         alt: "Surge dashboard showing AI code review results",
-        width: 1920,
-        height: 1080,
+        width: 1200,
+        height: 750,
       },
       {
-        src: "/images/projects/surge-2.jpg",
+        src: "https://picsum.photos/seed/surge-2/1200/750",
         alt: "Surge AI-powered PR summary generation",
-        width: 1920,
-        height: 1080,
+        width: 1200,
+        height: 750,
+      },
+      {
+        src: "https://picsum.photos/seed/surge-3/1200/750",
+        alt: "Surge real-time collaboration interface",
+        width: 1200,
+        height: 750,
       },
     ],
     liveUrl: "https://surge.dev",
@@ -57,17 +63,23 @@ export const projects: Project[] = [
     outcome:
       "Achieved 4x improvement in agent density over Linux containers. Successfully ran a swarm of 50 autonomous agents for 72 hours with zero downtime. The checkpoint system reduced recovery time from minutes to under 200 milliseconds.",
     thumbnail: {
-      src: "/images/projects/nuvora-thumb.jpg",
+      src: "https://picsum.photos/seed/nuvora-thumb/1200/630",
       alt: "NuvoraOS system architecture diagram",
       width: 1200,
       height: 630,
     },
     screenshots: [
       {
-        src: "/images/projects/nuvora-1.jpg",
+        src: "https://picsum.photos/seed/nuvora-1/1200/750",
         alt: "NuvoraOS agent runtime dashboard",
-        width: 1920,
-        height: 1080,
+        width: 1200,
+        height: 750,
+      },
+      {
+        src: "https://picsum.photos/seed/nuvora-2/1200/750",
+        alt: "NuvoraOS agent lifecycle management",
+        width: 1200,
+        height: 750,
       },
     ],
     githubUrl: "https://github.com/shashwatsinha/nuvora-os",

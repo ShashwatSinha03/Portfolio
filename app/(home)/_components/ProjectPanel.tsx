@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import type { Project } from "@/data/types";
 
 type Tab = "overview" | "solution" | "gallery";
@@ -131,30 +131,92 @@ function TabContent({
         </p>
       )}
 
-      {type === "gallery" && project.screenshots && (
-        <div className="max-h-[320px] overflow-y-auto space-y-3 pr-1 scrollbar-thin">
-          {project.screenshots.map((img, i) => (
-            <div
-              key={i}
-              className="overflow-hidden border border-[var(--color-border-primary)] bg-[var(--color-bg-elevated)]"
-            >
-              {img.src ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  className="w-full object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                    (e.target as HTMLImageElement).parentElement!.innerHTML =
-                      '<span class="flex items-center justify-center py-8 text-xs text-[var(--color-fg-tertiary)]">Image unavailable</span>';
-                  }}
-                />
-              ) : (
-                <span className="flex items-center justify-center py-8 text-xs text-[var(--color-fg-tertiary)]">No preview</span>
-              )}
+      {type === "gallery" && project.screenshots && project.screenshots.length > 0 && (
+        <GallerySlider images={project.screenshots} />
+      )}
+    </div>
+  );
+}
+
+function GallerySlider({ images }: { images: { src: string; alt: string }[] }) {
+  const [current, setCurrent] = useState(0);
+
+  const prev = useCallback(() => setCurrent((c) => (c === 0 ? images.length - 1 : c - 1)), [images.length]);
+  const next = useCallback(() => setCurrent((c) => (c === images.length - 1 ? 0 : c + 1)), [images.length]);
+
+  if (images.length === 0) return null;
+
+  return (
+    <div className="relative">
+      {/* Image container */}
+      <div className="relative overflow-hidden border border-[var(--color-border-primary)] bg-[var(--color-bg-elevated)]">
+        <div
+          className="flex transition-transform duration-400 ease-out"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+        >
+          {images.map((img, i) => (
+            <div key={i} className="min-w-0 w-full shrink-0 flex items-center justify-center bg-[var(--color-bg-elevated)]" style={{ aspectRatio: "16/10" }}>
+              {// eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full object-contain"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).style.display = "none";
+                  (e.target as HTMLImageElement).parentElement!.innerHTML =
+                    '<span class="text-xs text-[var(--color-fg-tertiary)]">No preview</span>';
+                }}
+              />}
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Controls */}
+      {images.length > 1 && (
+        <div className="flex items-center justify-between mt-3">
+          {/* Left arrow */}
+          <button
+            type="button"
+            onClick={prev}
+            className="flex items-center gap-1 text-xs text-[var(--color-fg-tertiary)] transition-colors hover:text-[var(--color-fg-primary)]"
+            aria-label="Previous image"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            Prev
+          </button>
+
+          {/* Dots */}
+          <div className="flex items-center gap-1.5">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => setCurrent(i)}
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                  i === current
+                    ? "bg-[var(--color-fg-primary)] w-3"
+                    : "bg-[var(--color-border-primary)] hover:bg-[var(--color-fg-tertiary)]"
+                }`}
+                aria-label={`Image ${i + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Right arrow */}
+          <button
+            type="button"
+            onClick={next}
+            className="flex items-center gap-1 text-xs text-[var(--color-fg-tertiary)] transition-colors hover:text-[var(--color-fg-primary)]"
+            aria-label="Next image"
+          >
+            Next
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </button>
         </div>
       )}
     </div>

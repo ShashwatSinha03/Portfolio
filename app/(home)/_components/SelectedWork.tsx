@@ -48,7 +48,7 @@ export default function SelectedWork() {
                 <button
                   type="button"
                   onClick={() => toggleProject(project.slug)}
-                  className="group flex w-full items-start gap-4 py-5 text-left transition-colors hover:bg-[var(--color-bg-surface-hover)]/30 -mx-4 px-4 rounded-lg"
+                  className="group flex w-full items-start gap-4 py-5 text-left transition-colors hover:bg-[var(--color-bg-surface-hover)]/30 px-0"
                 >
                   {/* Number */}
                   <span className="hidden w-6 pt-0.5 text-[11px] font-mono text-[var(--color-fg-tertiary)] sm:block">
@@ -95,7 +95,7 @@ export default function SelectedWork() {
                 >
                   <div className="pb-6">
                     <div
-                      className="border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-6 py-5"
+                      className="border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-4 py-5"
                       style={{
                         borderLeftColor: project.accentColor,
                         borderLeftWidth: "2px",
