@@ -87,7 +87,7 @@ export default function SelectedWork() {
 
                 {/* Expanded panel */}
                 <div
-                  className="overflow-hidden transition-all duration-400 ease-out"
+                  className="overflow-hidden transition-all duration-500 ease-out"
                   style={{
                     maxHeight: isOpen ? "800px" : "0px",
                     opacity: isOpen ? 1 : 0,
