@@ -220,7 +220,7 @@ function GallerySlider({ images }: { images: { src: string; alt: string }[] }) {
       </div>
 
       {/* Right: Description */}
-      <div className="sm:w-1/2 flex flex-col justify-center">
+      <div className="sm:w-1/2 flex flex-col justify-start">
         <div className="space-y-4">
           <p className="text-sm leading-relaxed text-[var(--color-fg-secondary)]">
             {images[current].alt}

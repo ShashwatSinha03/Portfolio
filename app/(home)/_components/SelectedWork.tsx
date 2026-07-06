@@ -71,7 +71,7 @@ export default function SelectedWork() {
                     height="16"
                     viewBox="0 0 16 16"
                     fill="none"
-                    className={`flex-shrink-0 mt-1.5 text-[var(--color-fg-tertiary)] transition-transform duration-300 ${
+                    className={`flex-shrink-0 mt-1 text-[var(--color-fg-tertiary)] transition-transform duration-300 ${
                       isOpen ? "rotate-180" : ""
                     }`}
                   >
