@@ -85,23 +85,24 @@ export default function SelectedWork() {
                   </svg>
                 </button>
 
-                {/* Expanded panel */}
+                {/* Expanded panel (grid-template-rows for smooth both-ways transition) */}
                 <div
-                  className="overflow-hidden transition-all duration-500 ease-out"
+                  className="grid transition-[grid-template-rows] duration-500 ease-out"
                   style={{
-                    maxHeight: isOpen ? "800px" : "0px",
-                    opacity: isOpen ? 1 : 0,
+                    gridTemplateRows: isOpen ? "1fr" : "0fr",
                   }}
                 >
-                  <div className="pb-6">
-                    <div
-                      className="border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-4 py-5"
-                      style={{
-                        borderLeftColor: project.accentColor,
-                        borderLeftWidth: "2px",
-                      }}
-                    >
-                      <ProjectPanel project={project} />
+                  <div className="min-h-0 overflow-hidden">
+                    <div className="pb-6">
+                      <div
+                        className="border border-[var(--color-border-primary)] bg-[var(--color-bg-secondary)] px-4 py-5"
+                        style={{
+                          borderLeftColor: project.accentColor,
+                          borderLeftWidth: "2px",
+                        }}
+                      >
+                        <ProjectPanel project={project} />
+                      </div>
                     </div>
                   </div>
                 </div>
