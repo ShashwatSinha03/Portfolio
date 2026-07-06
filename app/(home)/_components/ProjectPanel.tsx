@@ -147,20 +147,20 @@ function GallerySlider({ images }: { images: { src: string; alt: string }[] }) {
   if (images.length === 0) return null;
 
   return (
-    <div className="relative">
+    <div className="max-w-md">
       {/* Image container */}
-      <div className="relative overflow-hidden border border-[var(--color-border-primary)] bg-[var(--color-bg-elevated)]">
+      <div className="relative overflow-hidden border border-[var(--color-border-primary)] bg-[var(--color-bg-elevated)] group">
         <div
           className="flex transition-transform duration-400 ease-out"
           style={{ transform: `translateX(-${current * 100}%)` }}
         >
           {images.map((img, i) => (
-            <div key={i} className="min-w-0 w-full shrink-0 flex items-center justify-center bg-[var(--color-bg-elevated)]" style={{ aspectRatio: "16/10" }}>
+            <div key={i} className="min-w-0 w-full shrink-0 flex items-center justify-center bg-[var(--color-bg-elevated)]" style={{ aspectRatio: "16/9" }}>
               {// eslint-disable-next-line @next/next/no-img-element
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-cover"
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = "none";
                   (e.target as HTMLImageElement).parentElement!.innerHTML =
@@ -170,53 +170,50 @@ function GallerySlider({ images }: { images: { src: string; alt: string }[] }) {
             </div>
           ))}
         </div>
+
+        {/* Glassmorphic arrows */}
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={prev}
+              className="absolute left-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white/20"
+              aria-label="Previous image"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white/20"
+              aria-label="Next image"
+            >
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </>
+        )}
       </div>
 
-      {/* Controls */}
+      {/* Dots */}
       {images.length > 1 && (
-        <div className="flex items-center justify-between mt-3">
-          {/* Left arrow */}
-          <button
-            type="button"
-            onClick={prev}
-            className="flex items-center gap-1 text-xs text-[var(--color-fg-tertiary)] transition-colors hover:text-[var(--color-fg-primary)]"
-            aria-label="Previous image"
-          >
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M9 3L5 7l4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            Prev
-          </button>
-
-          {/* Dots */}
-          <div className="flex items-center gap-1.5">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                type="button"
-                onClick={() => setCurrent(i)}
-                className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
-                  i === current
-                    ? "bg-[var(--color-fg-primary)] w-3"
-                    : "bg-[var(--color-border-primary)] hover:bg-[var(--color-fg-tertiary)]"
-                }`}
-                aria-label={`Image ${i + 1}`}
-              />
-            ))}
-          </div>
-
-          {/* Right arrow */}
-          <button
-            type="button"
-            onClick={next}
-            className="flex items-center gap-1 text-xs text-[var(--color-fg-tertiary)] transition-colors hover:text-[var(--color-fg-primary)]"
-            aria-label="Next image"
-          >
-            Next
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M5 3l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </button>
+        <div className="flex items-center justify-center gap-1.5 mt-2">
+          {images.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setCurrent(i)}
+              className={`w-1.5 h-1.5 rounded-full transition-all duration-200 ${
+                i === current
+                  ? "bg-[var(--color-fg-primary)] w-3"
+                  : "bg-[var(--color-border-primary)] hover:bg-[var(--color-fg-tertiary)]"
+              }`}
+              aria-label={`Image ${i + 1}`}
+            />
+          ))}
         </div>
       )}
     </div>
